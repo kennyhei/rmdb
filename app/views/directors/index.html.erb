@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Birthday</th>
+      <th>Age</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,9 +15,9 @@
   <tbody>
     <% @directors.each do |director| %>
       <tr>
-        <td><%= director.name %></td>
+        <td><%= link_to director.name, director %></td>
         <td><%= director.birthday %></td>
-        <td><%= link_to 'Show', director %></td>
+        <td><%= director.age %></td>
         <td><%= link_to 'Edit', edit_director_path(director) %></td>
         <td><%= link_to 'Destroy', director, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

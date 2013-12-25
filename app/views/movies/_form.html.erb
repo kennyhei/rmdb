@@ -20,12 +20,16 @@
     <%= f.number_field :year %>
   </div>
   <div class="field">
+    <%= f.label :runtime %><br>
+    <%= f.number_field :runtime %>
+  </div>
+  <div class="field">
     <%= f.label :studio %><br>
     <%= f.text_field :studio %>
   </div>
   <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
+    <%= f.label :director_id %><br>
+    <%= f.select :director_id, options_from_collection_for_select(@directors, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

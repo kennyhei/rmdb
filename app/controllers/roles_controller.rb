@@ -15,6 +15,7 @@ class RolesController < ApplicationController
   # GET /roles/new
   def new
     @role = Role.new
+    @movies = Movie.all
   end
 
   # GET /roles/1/edit
@@ -28,7 +29,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        format.html { redirect_to roles_path, notice: 'Role was successfully created.' }
         format.json { render action: 'show', status: :created, location: @role }
       else
         format.html { render action: 'new' }

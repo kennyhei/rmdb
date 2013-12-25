@@ -1,13 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @director.name %>
-</p>
+<h2><%= @director.name %></h2>
 
 <p>
   <strong>Birthday:</strong>
   <%= @director.birthday %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @director.age %>
+</p>
+
+<p>
+  <strong>Directed movies:</strong>
+  <ul>
+    <% @movies.each do |movie| %>
+    <li>
+      <%= movie.name %>
+    </li>
+    <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_director_path(@director) %> |

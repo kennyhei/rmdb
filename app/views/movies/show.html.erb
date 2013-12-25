@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @movie.name %>
-</p>
+<h2><%= @movie.name %> (<%= @movie.year %>)</h2>
 
 <p>
-  <strong>Year:</strong>
-  <%= @movie.year %>
+  <strong>Runtime:</strong>
+  <%= @movie.runtime %> minutes
 </p>
 
 <p>
@@ -16,8 +13,12 @@
 </p>
 
 <p>
-  <strong>Rating:</strong>
-  <%= @movie.rating %>
+  <strong>Roles:</strong>
+<ul>
+  <% @roles.each do |role| %>
+      <li> <%= role.name %> </li>
+  <% end %>
+</ul>
 </p>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |

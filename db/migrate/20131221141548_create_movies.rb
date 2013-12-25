@@ -3,8 +3,9 @@ class CreateMovies < ActiveRecord::Migration
     create_table :movies do |t|
       t.string :name
       t.integer :year
+	  t.integer :runtime
       t.string :studio
-      t.float :rating
+	  t.integer :director_id
 
       t.timestamps
     end

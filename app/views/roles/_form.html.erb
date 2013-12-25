@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :movie_id %><br>
-    <%= f.number_field :movie_id %>
+    <%= f.select :movie_id, options_from_collection_for_select(@movies, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

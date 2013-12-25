@@ -10,6 +10,7 @@ class DirectorsController < ApplicationController
   # GET /directors/1
   # GET /directors/1.json
   def show
+    @movies = Movie.where director_id: params[:id]
   end
 
   # GET /directors/new
@@ -28,7 +29,7 @@ class DirectorsController < ApplicationController
 
     respond_to do |format|
       if @director.save
-        format.html { redirect_to @director, notice: 'Director was successfully created.' }
+        format.html { redirect_to directors_path, notice: 'Director was successfully created.' }
         format.json { render action: 'show', status: :created, location: @director }
       else
         format.html { render action: 'new' }

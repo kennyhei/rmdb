@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate, only: [:create, :new, :destroy]
 
   # GET /movies
   # GET /movies.json
@@ -10,11 +11,13 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @roles = Role.where movie_id: params[:id]
   end
 
   # GET /movies/new
   def new
     @movie = Movie.new
+    @directors = Director.all
   end
 
   # GET /movies/1/edit
@@ -28,7 +31,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to movies_path, notice: 'Movie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @movie }
       else
         format.html { render action: 'new' }
@@ -62,6 +65,13 @@ class MoviesController < ApplicationController
   end
 
   private
+
+    def authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "dark" and password == "souls"
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
@@ -69,6 +79,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :year, :studio, :rating)
+      params.require(:movie).permit(:name, :year, :runtime, :studio, :director_id)
     end
 end

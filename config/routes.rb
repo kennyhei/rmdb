@@ -1,4 +1,6 @@
 Rmdb::Application.routes.draw do
+  root to: 'movies#index'
+
   resources :directors
 
   resources :roles

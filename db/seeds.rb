@@ -9,8 +9,8 @@
 d1 = Director.create :name => "Danny Boyle", :birthday => Date.new(1956, 10, 20)
 d2 = Director.create :name => "James Wan", :birthday => Date.new(1977, 2, 27)
 
-m1 = Movie.new :name => "127 Hours", :year => 2010
-m2 = Movie.new :name => "Saw", :year => 2004
+m1 = Movie.new :name => "127 Hours", :year => 2010, :runtime => 94, :studio => "Fox Searchlight Pictures"
+m2 = Movie.new :name => "Saw", :year => 2004, :runtime => 102, :studio => "Lionsgate"
 
 d1.movies << m1
 d2.movies << m2
