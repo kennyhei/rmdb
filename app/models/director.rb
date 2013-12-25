@@ -1,6 +1,6 @@
 class Director < ActiveRecord::Base
 
-  has_many :movies
+  has_many :movies, :dependent => :destroy
 
   def age
     now = Time.now.utc.to_date
