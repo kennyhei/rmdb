@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  #before_filter :authenticate, only: [:create, :new, :destroy]
+  before_filter :authenticate, only: [:create, :new, :destroy]
 
   # GET /movies
   # GET /movies.json
