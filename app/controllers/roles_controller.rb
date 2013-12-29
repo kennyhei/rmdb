@@ -20,6 +20,7 @@ class RolesController < ApplicationController
 
   # GET /roles/1/edit
   def edit
+    @movies = Movie.all
   end
 
   # POST /roles

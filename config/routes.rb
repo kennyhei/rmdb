@@ -1,13 +1,12 @@
 Rmdb::Application.routes.draw do
-  resources :actors
-
   root to: 'movies#index'
 
-  resources :directors
+  get 'signup', to: 'users#new'
+  get 'signin', to: 'sessions#new'
+  delete 'signout', to: 'sessions#destroy'
 
-  resources :roles
-
-  resources :movies
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :directors, :roles, :movies, :actors, :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
