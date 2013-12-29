@@ -3,6 +3,11 @@
 <h2><%= @movie.name %> (<%= @movie.year %>)</h2>
 
 <p>
+  <strong>Director:</strong>
+  <%= @movie.director.name %>
+</p>
+
+<p>
   <strong>Runtime:</strong>
   <%= @movie.runtime %> minutes
 </p>
@@ -13,13 +18,28 @@
 </p>
 
 <p>
-  <strong>Roles:</strong>
-<ul>
-  <% @roles.each do |role| %>
-      <li> <%= role.name %> </li>
-  <% end %>
-</ul>
+  <strong>Cast:</strong>
 </p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Actor</th>
+    <th>Role</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @movie.roles.each do |role| %>
+      <tr>
+        <td><%= link_to role.actor.name, role.actor %></td>
+        <td><%= role.name %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

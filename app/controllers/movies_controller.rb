@@ -11,7 +11,6 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @roles = Role.where movie_id: params[:id]
   end
 
   # GET /movies/new
@@ -34,6 +33,7 @@ class MoviesController < ApplicationController
         format.html { redirect_to movies_path, notice: 'Movie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @movie }
       else
+        @directors = Director.all
         format.html { render action: 'new' }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end

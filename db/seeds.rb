@@ -18,8 +18,18 @@ d1.movies << m1
 d2.movies << m2
 d3.movies << m3
 
-m1.roles.create :name => "Aron Ralston"
+r1 = Role.new :name => "Aron Ralston"
+r2 = Role.new :name => "Dr. Lawrence Gordon"
+r3 = Role.new :name => "John Kramer"
 
-m2.roles.create :name => "Dr. Lawrence Gordon"
-m2.roles.create :name => "John Kramer"
-m2.roles.create :name => "Adam Stanheight"
+m1.roles << r1
+m2.roles << r2
+m2.roles << r3
+
+a1 = Actor.create :name => "James Franco", :birthday => Date.new(1978, 4, 19)
+a2 = Actor.create :name => "Cary Elwes", :birthday => Date.new(1962, 10, 26)
+a3 = Actor.create :name => "Tobin Bell", :birthday => Date.new(1942, 8, 7)
+
+a1.roles << r1
+a2.roles << r2
+a3.roles << r3

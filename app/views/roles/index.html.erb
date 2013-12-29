@@ -5,7 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Movie</th>
-      <th></th>
+      <th>Played by</th>
       <th></th>
       <th></th>
     </tr>
@@ -16,6 +16,7 @@
       <tr>
         <td><%= link_to role.name, role %></td>
         <td><%= role.movie.name %></td>
+        <td><%= link_to role.actor.name, actor_path(role.actor) %></td>
         <td><%= link_to 'Edit', edit_role_path(role) %></td>
         <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
